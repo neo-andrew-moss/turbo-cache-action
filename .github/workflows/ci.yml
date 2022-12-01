@@ -29,10 +29,11 @@ jobs:
           path: "**/node_modules"
           key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
 
-      - name: Install
-        run: |
-          npm i -g npm
-          npm install --prefer-offline --include=dev
+      - name: Install npm
+        run: npm install -g npm
+
+      - name: Install deps
+        run: npm install --prefer-offline --include=dev
 
       - name: Build
         run: npm run build
